@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--本xml为设计稿定义主题色，仅供主题色配置-->
+
+    <!--主色-->
+    <color name="color_FD5B03">#FD5B03</color>
+    <!--点缀色-->
+    <color name="color_FD9403">#FD9403</color>
+
+    <!--背景色-->
+    <color name="color_111425">#111425</color>
+
+    <!--divider用色-->
+    <color name="color_E8E8E8_a06">#0FE8E8E8</color>
+
+    <!--渐变色-->
+    <color name="color_FEC97E">#FEC97E</color>
+    <color name="color_FFB44D">#FFB44D</color>
+    <color name="color_FEC97E">#FEC97E</color>
+
+    <!--文字用色-->
+    <color name="color_E8E8E8_a100">#FFE8E8E8</color>
+    <color name="color_E8E8E8_a80">#CCE8E8E8</color>
+    <color name="color_E8E8E8_a60">#99E8E8E8</color>
+    <color name="color_E8E8E8_a40">#66E8E8E8</color>
+
+    <!--分割线用色-->
+    <color name="color_373737_a100">#373737</color>
+    <color name="color_373737_a50">#80373737</color>
+    <!--分割线用色-->
+    <color name="color_5B5B5B">#5B5B5B</color>
+    <!--搜索框背景色-->
+    <color name="color_121212">#121212</color>
+    <!--搜索框占位字体色-->
+    <color name="color_747577">#747577</color>
+    <!--Tab高亮色-->
+    <color name="color_FF4F00">#FF4F00</color>
+    <!--appBar前景色-->
+    <color name="color_D0D0D0">#D0D0D0</color>
+    <!--appBar前景色-->
+    <color name="color_D0D0D0">#D0D0D0</color>
+    <!--bottomSheet/dialog背景色-->
+    <color name="color_464646">#464646</color>
+    <!--bottomNavigationBar背景色-->
+    <color name="color_090C1C">#090C1C</color>
+
+</resources>

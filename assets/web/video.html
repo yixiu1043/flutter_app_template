@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/mui-player@1.7.0/dist/mui-player.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mui-player@1.7.0/dist/mui-player.min.js"></script>
+    <title>video player</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        background-color: #000000;
+        overflow: hidden;
+      }
+      #mui-player {
+        background-color: #000000;
+        margin: auto;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        min-height: 100%;
+      }
+      #full-switch {
+        display: none;
+      }
+      #mplayer-header,
+      #mplayer-footer {
+        background: transparent !important;
+      }
+    </style>
+</head>
+<body>
+<div id="mui-player"></div>
+<script>
+      var mp = new MuiPlayer({
+        container: "#mui-player",
+        src: "../video/fa.mp4",
+        themeColor: "#FD5B03",
+        autoplay: true,
+        loop: true,
+        muted: true,
+        pageHead: false,
+        videoAttribute: [
+          { attrKey: "webkit-playsinline", attrValue: "" },
+          { attrKey: "playsinline", attrValue: "" },
+          { attrKey: "x5-playsinline", attrValue: "" },
+          { attrKey: "t7-video-player-type", attrValue: "inline" },
+          { attrKey: "x5-video-player-type", attrValue: "h5-page" },
+          { attrKey: "x-webkit-airplay", attrValue: "allow" },
+          { attrKey: "controlslist", attrValue: "nodownload nofullscreen" },
+        ],
+        poster: "../video/fa_bg.png",
+      });
+    </script>
+</body>
+</html>

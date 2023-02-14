@@ -1,0 +1,1 @@
+class ActivityException implements Exception {}

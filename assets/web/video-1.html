@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        background-color: #000000;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
+      button.vjs-picture-in-picture-control,
+      button.vjs-fullscreen-control,
+      button.vjs-big-play-button {
+        display: none !important;
+      }
+      #my-video {
+        background-color: #000000;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        min-height: 100%;
+      }
+    </style>
+</head>
+<body>
+    <video
+        id="my-video"
+        class="video-js"
+        controls
+        autoplay
+        muted
+        loop
+        disablePictureInPicture
+        controlslist="nodownload nofullscreen noremoteplayback"
+        webkit-playsinline
+        playsinline
+        x5-playsinline
+        t7-video-player-type="inline"
+        x5-video-player-type="h5-page"
+    >
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank"
+            >supports HTML5 video</a
+            >
+        </p>
+    </video>
+
+    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+    <script>
+      var isProd = window.parent.isProd;
+      videojs(document.getElementById("my-video"), {
+        poster: isProd
+          ? "https://image.ots8k922.com/prod/mb_activity/assets/video/fa_bg.png"
+          : "../video/fa_bg.png",
+        sources: [
+          {
+            src: isProd
+              ? "https://image.ots8k922.com/prod/mb_activity/assets/video/fa.mp4"
+              : "../video/fa.mp4",
+            type: "video/mp4",
+          },
+        ],
+      });
+    </script>
+</body>
+</html>
