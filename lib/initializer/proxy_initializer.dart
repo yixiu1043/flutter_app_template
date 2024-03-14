@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:get/get.dart';
+import 'package:dio/io.dart';
+import 'package:flavor/flavor.dart';
 import 'package:yx_app/flavor/properties.dart';
 import 'package:yx_app/initializer/app_initializer.dart';
 import 'package:yx_app/net/domain/domain_switch_handler.dart';
@@ -12,16 +12,37 @@ import 'package:sp_util/sp_util.dart';
 class ProxyInitializer implements AppInitializer {
   @override
   FutureOr<void> init() {
-    for (final element in UrlEndpoint.values) {
-      final dio = Get.find<Dio>(tag: '${element.name}_url');
-      dio.configJavProxy();
-    }
+    final launchDio = Dio(BaseOptions(
+      baseUrl: SpUtil.getString(LAUNCH_KEY, defValue: null) ??
+          Flavor.I.getString(LAUNCH_URL)!,
+      connectTimeout: const Duration(milliseconds: 8000),
+      sendTimeout: const Duration(milliseconds: 8000),
+      receiveTimeout: const Duration(milliseconds: 8000),
+    ));
+    final memberDio = Dio(BaseOptions(
+      baseUrl: SpUtil.getString(MEMBER_KEY, defValue: null) ??
+          Flavor.I.getString(MEMBER_URL)!,
+      connectTimeout: const Duration(milliseconds: 8000),
+      sendTimeout: const Duration(milliseconds: 8000),
+      receiveTimeout: const Duration(milliseconds: 8000),
+    ));
+    final cgwDio = Dio(BaseOptions(
+      baseUrl: SpUtil.getString(CGW_KEY, defValue: null) ??
+          Flavor.I.getString(CGW_URL)!,
+      connectTimeout: const Duration(milliseconds: 8000),
+      sendTimeout: const Duration(milliseconds: 8000),
+      receiveTimeout: const Duration(milliseconds: 8000),
+    ));
 
-    errorHandlerDio.configJavProxy();
+    launchDio.configProxy();
+    memberDio.configProxy();
+    cgwDio.configProxy();
+
+    errorHandlerDio.configProxy();
   }
 }
 
-class HttpProxyAdapter extends DefaultHttpClientAdapter {
+class HttpProxyAdapter extends IOHttpClientAdapter {
   final String ipAddr;
   final String port;
 
@@ -39,7 +60,7 @@ class HttpProxyAdapter extends DefaultHttpClientAdapter {
 }
 
 extension DioExtension on Dio {
-  void configJavProxy() {
+  void configProxy() {
     if (SpUtil.getBool("setProxy", defValue: false) ?? false) {
       String ipAddr =
           SpUtil.getString("proxyIp", defValue: "127.0.0.1") as String;

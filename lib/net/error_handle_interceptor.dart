@@ -8,7 +8,7 @@ import 'package:yx_app/utils/overlay_extension.dart';
 
 class ErrorHandleInterceptor extends Interceptor {
   @override
-  onError(DioError err, ErrorInterceptorHandler handler) {
+  onError(DioException err, ErrorInterceptorHandler handler) {
     // Do something with response error
     if (err.error is NetworkException) {
       handleError(
@@ -23,24 +23,26 @@ class ErrorHandleInterceptor extends Interceptor {
       return handler.next(err);
     } else if (err.error is ServerException) {
       handleError(
-        err.error.message,
+        err.message,
         align: Alignment.center,
         requestOptions: err.requestOptions,
       );
       return handler.next(err);
     }
     switch (err.type) {
-      case DioErrorType.connectTimeout:
-      case DioErrorType.sendTimeout:
-      case DioErrorType.receiveTimeout:
-      case DioErrorType.cancel:
-      case DioErrorType.other:
+      case DioExceptionType.connectionTimeout:
+      case DioExceptionType.sendTimeout:
+      case DioExceptionType.receiveTimeout:
+      case DioExceptionType.cancel:
+      case DioExceptionType.unknown:
         handleError(
           '内容超时了，请稍后再试',
           requestOptions: err.requestOptions,
         );
         break;
-      case DioErrorType.response:
+      case DioExceptionType.badResponse:
+      case DioExceptionType.badCertificate:
+      case DioExceptionType.connectionError:
         final data = err.response?.data;
         if (err.response?.statusCode == 503 || data['code'] == 4091) {
           showToast('服务升级中，请稍后访问');
@@ -60,7 +62,7 @@ class ErrorHandleInterceptor extends Interceptor {
 }
 
 void handleError(
-  String message, {
+  String? message, {
   required RequestOptions requestOptions,
   String? title,
   Alignment align = Alignment.center,

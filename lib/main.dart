@@ -1,5 +1,6 @@
 import 'package:flavor/flavor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
@@ -40,7 +41,7 @@ Future<void> setupApp() async {
     // ProxyInitializer(),
     // ToolsInitializer(),
   }).init();
-  runApp(const YxApp());
+  runApp(const ProviderScope(child: YxApp()));
 }
 
 class YxApp extends StatelessWidget {
@@ -51,36 +52,19 @@ class YxApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      builder: (context, Widget? child) => GetMaterialApp(
-        title: '美播真人 优惠活动',
-        onGenerateTitle: (BuildContext context) {
-          return Tools.instance.getCurrentTitle();
-        },
-        translations: YxTranslations(),
-        defaultTransition: Transition.fadeIn,
+      builder: (context, Widget? child) => MaterialApp.router(
+        title: 'flutter app template',
         themeMode: ThemeMode.dark,
         debugShowCheckedModeBanner: false,
-        enableLog: true,
-        initialRoute: Routes.MAIN,
         theme: yxTheme,
-        getPages: AppPages.pages,
         locale: const Locale('zh', 'CN'),
-        fallbackLocale: const Locale('en', 'US'),
         supportedLocales: const [Locale('zh', 'CN'), Locale('en', 'US')],
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        navigatorObservers: [
-          ToastObserver(),
-        ],
-        onInit: () {
-          ConnectivityManager.instance.init();
-        },
-        onDispose: () {
-          ConnectivityManager.instance.dispose();
-        },
+        routerConfig: AppPages.pages,
         builder: ToastManager.initWithParameters(
           builder: (context, widget) {
             return Stack(

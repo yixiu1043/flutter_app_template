@@ -88,28 +88,28 @@ class DomainSwitchHandler {
     handler.next(options.copyWith(baseUrl: _currentUrl));
   }
 
-  void onError(DioError err, ErrorInterceptorHandler handler) async {
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
     if (!err.requestOptions.extra.containsKey('retry')) {
       err.requestOptions.extra
           .putIfAbsent('originUrl', () => err.requestOptions.uri.toString());
     }
-    if (err.type == DioErrorType.other && err.error is SocketException) {
+    if (err.type == DioExceptionType.connectionError && err.error is SocketException) {
       await checkNetworkStatus(err, handler);
       return;
     }
-    if (err.type == DioErrorType.other && err.error is HttpException) {
+    if (err.type == DioExceptionType.connectionError && err.error is HttpException) {
       await _retryRequest(err, handler);
       return;
     }
-    if (err.type == DioErrorType.other && err.error is FormatException) {
+    if (err.type == DioExceptionType.unknown && err.error is FormatException) {
       await _retryRequest(err, handler);
       return;
     }
-    if (err.type == DioErrorType.connectTimeout) {
+    if (err.type == DioExceptionType.connectionTimeout) {
       await _retryRequest(err, handler);
       return;
     }
-    if (err.type == DioErrorType.response &&
+    if (err.type == DioExceptionType.badResponse &&
         ((err.response?.statusCode ?? 0) >= 500)) {
       await _retryRequest(err, handler);
       return;
@@ -118,14 +118,14 @@ class DomainSwitchHandler {
   }
 
   Future<void> checkNetworkStatus(
-    DioError err,
+    DioException err,
     ErrorInterceptorHandler handler,
   ) async {
     const url = 'https://www.baidu.com/y1979';
     try {
       await _simpleDio.get(url);
     } catch (e) {
-      if (e is DioError && e.response != null) {
+      if (e is DioException && e.response != null) {
         await _retryRequest(err, handler);
         return;
       }
@@ -134,7 +134,7 @@ class DomainSwitchHandler {
   }
 
   Future<void> _retryRequest(
-      DioError err, ErrorInterceptorHandler handler) async {
+      DioException err, ErrorInterceptorHandler handler) async {
     _invalidDomains.add(err.requestOptions.baseUrl);
     final domains = _filterValidDomains().toSet().toList();
 
@@ -161,7 +161,7 @@ class DomainSwitchHandler {
               err.requestOptions.copyWith(baseUrl: domain, extra: retryExtra));
           if (_handleResponse(response)) return;
         } catch (e) {
-          if (e is DioError) {
+          if (e is DioException) {
             if (!_invalidDomains.contains(err.requestOptions.uri.toString())) {
               _invalidDomains.add(err.requestOptions.uri.toString());
             }
@@ -189,7 +189,7 @@ class DomainSwitchHandler {
   }
 
   Future<Response<dynamic>> _parallelRetry(
-      List<String> domains, DioError err) async {
+      List<String> domains, DioException err) async {
     var errorCount = 0;
     final completer = Completer<Response<dynamic>>();
     if (domains.isEmpty) {
@@ -211,7 +211,7 @@ class DomainSwitchHandler {
         }
       }).onError((error, stackTrace) {
         errorCount++;
-        if (error is DioError) {
+        if (error is DioException) {
           if (!_invalidDomains.contains(error.requestOptions.uri.toString())) {
             _invalidDomains.add(error.requestOptions.uri.toString());
           }
@@ -238,7 +238,7 @@ class DomainSwitchHandler {
     return rest;
   }
 
-  bool _forceQueuedRetry(DioError err) {
+  bool _forceQueuedRetry(DioException err) {
     if (err.requestOptions.uri.toString().contains('jav/registerLogin')) {
       return true;
     }

@@ -1,21 +1,21 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yx_app/gen/assets.gen.dart';
-import 'package:yx_app/utils/double_exit_will_pop_scaope.dart';
-import 'package:yx_app/utils/overlay_extension.dart';
-import 'home_controller.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+import 'app_pages.dart';
+
+class ScaffoldWithBottomNavBar extends StatefulWidget {
+  final Widget child;
+
+  const ScaffoldWithBottomNavBar({super.key, required this.child});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ScaffoldWithBottomNavBar> createState() =>
+      _ScaffoldWithBottomNavBarState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final controller = Get.find<HomeController>();
+class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
+  int _selectedIndex = 0;
 
   final bottomNavigationBarItems = [
     BottomNavigationBarItem(
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
         excludeFromSemantics: true,
         gaplessPlayback: true,
       ),
-      label: 'home_tab_main'.tr,
+      label: 'HOME',
     ),
     BottomNavigationBarItem(
       icon: Image.asset(
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         excludeFromSemantics: true,
         gaplessPlayback: true,
       ),
-      label: 'home_tab_promotion'.tr,
+      label: 'PROMOTION',
     ),
     BottomNavigationBarItem(
       icon: Image.asset(
@@ -61,37 +61,31 @@ class _HomePageState extends State<HomePage> {
         excludeFromSemantics: true,
         gaplessPlayback: true,
       ),
-      label: 'home_tab_mine'.tr,
+      label: 'MINE',
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return DoubleExitWillPopScope(
-      onIntercept: () {
-        showToast('home_tab_exit'.tr);
-      },
-      onHandle: () {
-        if (GetPlatform.isAndroid) {
-          exit(0);
-        }
-      },
-      child: Scaffold(
-        body: PageView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: controller.pageController,
-          itemBuilder: (BuildContext context, int index) {
-            return controller.pages[index];
-          },
-        ),
-        bottomNavigationBar: Obx(
-              () => BottomNavigationBar(
-            currentIndex: controller.currentIndex,
-            onTap: controller.onTap,
-            items: bottomNavigationBarItems,
-          ),
-        ),
+    return Scaffold(
+      body: widget.child,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        items: bottomNavigationBarItems,
+        onTap: (index) => _tap(context, index),
       ),
     );
+  }
+
+  void _tap(BuildContext context, int index) {
+    setState(() => _selectedIndex = index); // used for the highlighted state
+    // navigate to the target route based on the tab index
+    if (index == 0) {
+      context.goNamed(Routes.HOME);
+    } else if (index == 1) {
+      context.goNamed(Routes.PROMOTION);
+    } else if (index == 2) {
+      context.goNamed(Routes.MINE);
+    }
   }
 }

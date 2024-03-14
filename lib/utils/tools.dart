@@ -53,13 +53,13 @@ class Tools {
     return textPainter.size;
   }
 
-  String getCurrentTitle() {
-    const defaultTitle = '美播真人 优惠活动';
-    if(!GetPlatform.isWeb) {
-      return defaultTitle;
-    }
-    final appPages = AppPages.pages;
-    final list = appPages.where((element) => element.name == Get.currentRoute);
-    return list.isNotEmpty ? list.first.title ?? defaultTitle : defaultTitle;
-  }
+  // String getCurrentTitle() {
+  //   const defaultTitle = '美播真人 优惠活动';
+  //   if(!GetPlatform.isWeb) {
+  //     return defaultTitle;
+  //   }
+  //   final appPages = AppPages.pages;
+  //   final list = appPages.where((element) => element.name == Get.currentRoute);
+  //   return list.isNotEmpty ? list.first.title ?? defaultTitle : defaultTitle;
+  // }
 }

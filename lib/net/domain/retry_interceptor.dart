@@ -13,7 +13,7 @@ class RetryInterceptor extends QueuedInterceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) async {
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
     domainHandler.onError(err, handler);
   }
 }

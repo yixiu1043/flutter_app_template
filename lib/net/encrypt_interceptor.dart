@@ -19,14 +19,14 @@ class EncryptInterceptor extends Interceptor {
   final String aesVersion;
   final bool openEncrypt;
 
-  late JavEncrypter _javEncrypter;
+  late HttpEncryptor _javEncrypter;
 
   EncryptInterceptor({
     this.aesKey = '',
     this.aesVersion = '1',
     this.openEncrypt = false,
   }) {
-    _javEncrypter = JavEncrypter(aesKey);
+    _javEncrypter = HttpEncryptor(aesKey);
   }
 
   @override
@@ -94,12 +94,12 @@ class EncryptInterceptor extends Interceptor {
   }
 }
 
-class JavEncrypter {
+class HttpEncryptor {
   final String aesKey;
   late GZipCodec _gZipCodec;
   late Encrypter _encrypter;
 
-  JavEncrypter(this.aesKey) {
+  HttpEncryptor(this.aesKey) {
     _gZipCodec = GZipCodec();
     _encrypter = Encrypter(
         AES(Key.fromUtf8(aesKey), mode: AESMode.cbc, padding: 'PKCS7'));

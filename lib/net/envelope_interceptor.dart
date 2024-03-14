@@ -48,15 +48,15 @@ class EnvelopeInterceptor extends Interceptor {
         response.data = data['data'];
         handler.next(response);
       } else if (ERR_CODE.contains(code)) {
-        final error = DioError(
-          type: DioErrorType.response,
+        final error = DioException(
+          type: DioExceptionType.badResponse,
           error: AuthFailException(code, message),
           requestOptions: response.requestOptions,
         );
         handler.reject(error, true);
       } else {
-        final error = DioError(
-          type: DioErrorType.response,
+        final error = DioException(
+          type: DioExceptionType.unknown,
           error: ServerException(code, message),
           requestOptions: response.requestOptions,
         );

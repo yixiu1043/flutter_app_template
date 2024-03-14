@@ -16,23 +16,23 @@ class ApiInitializer implements AppInitializer {
     final launchDio = Dio(BaseOptions(
       baseUrl: SpUtil.getString(LAUNCH_KEY, defValue: null) ??
           Flavor.I.getString(LAUNCH_URL)!,
-      connectTimeout: 8000,
-      sendTimeout: 8000,
-      receiveTimeout: 8000,
+      connectTimeout: const Duration(milliseconds: 8000),
+      sendTimeout: const Duration(milliseconds: 8000),
+      receiveTimeout: const Duration(milliseconds: 8000),
     ));
     final memberDio = Dio(BaseOptions(
       baseUrl: SpUtil.getString(MEMBER_KEY, defValue: null) ??
           Flavor.I.getString(MEMBER_URL)!,
-      connectTimeout: 8000,
-      sendTimeout: 8000,
-      receiveTimeout: 8000,
+      connectTimeout: const Duration(milliseconds: 8000),
+      sendTimeout: const Duration(milliseconds: 8000),
+      receiveTimeout: const Duration(milliseconds: 8000),
     ));
     final cgwDio = Dio(BaseOptions(
       baseUrl: SpUtil.getString(CGW_KEY, defValue: null) ??
           Flavor.I.getString(CGW_URL)!,
-      connectTimeout: 8000,
-      sendTimeout: 8000,
-      receiveTimeout: 8000,
+      connectTimeout: const Duration(milliseconds: 8000),
+      sendTimeout: const Duration(milliseconds: 8000),
+      receiveTimeout: const Duration(milliseconds: 8000),
     ));
 
     Get

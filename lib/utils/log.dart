@@ -22,7 +22,7 @@ class Log {
   }
 
   static void e(dynamic message, [dynamic error, StackTrace? stackTrace]) {
-    _logger.e(message, error, stackTrace);
+    _logger.e(message, error: error, stackTrace: stackTrace);
   }
 
   static void wtf(dynamic message) {
