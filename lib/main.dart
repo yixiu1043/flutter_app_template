@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:flutter_app_template/components/theme/yx_theme.dart';
+import 'package:flutter_app_template/components/theme/custom_theme.dart';
 import 'package:flutter_app_template/components/toast/toast_manager.dart';
 import 'package:flutter_app_template/flavor/properties.dart';
 
@@ -21,6 +21,8 @@ import 'package:flutter_app_template/router/app_pages.dart';
 import 'package:flutter_app_template/utils/connectivity_manager.dart';
 import 'package:flutter_app_template/utils/tools.dart';
 import 'package:flutter_app_template/utils/yx_translations.dart';
+
+import 'utils/store.dart';
 
 void main() {
   Flavor.create(
@@ -44,10 +46,29 @@ Future<void> setupApp() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+
+  @override
+  void initState() {
+    Store.init();
+    ConnectivityManager.instance.init();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    ConnectivityManager.instance.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -56,7 +77,7 @@ class MyApp extends StatelessWidget {
         title: 'flutter app template',
         themeMode: ThemeMode.dark,
         debugShowCheckedModeBanner: false,
-        theme: yxTheme,
+        theme: customTheme,
         locale: const Locale('zh', 'CN'),
         supportedLocales: const [Locale('zh', 'CN'), Locale('en', 'US')],
         localizationsDelegates: const [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../components/toast/toast_manager.dart';
 import '../modules/home/home_page.dart';
 import '../modules/mine/mine_page.dart';
 import '../modules/promotion/promotion_page.dart';
@@ -18,6 +19,7 @@ class AppPages {
     initialLocation: Routes.INITIAL,
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
+    observers: [ToastObserver()],
     routes: [
       ShellRoute(
         navigatorKey: _shellNavigatorKey,

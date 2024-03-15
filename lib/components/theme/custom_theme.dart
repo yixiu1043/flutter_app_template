@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/gen/colors.gen.dart';
 
-final ThemeData yxTheme = ThemeData.dark().copyWith(
+final ThemeData customTheme = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: ColorName.color111425,
   splashColor: Colors.transparent,
   highlightColor: Colors.transparent,
