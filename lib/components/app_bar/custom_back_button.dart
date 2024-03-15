@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/gen/assets.gen.dart';
 
-class YxBackButton extends StatelessWidget {
-  const YxBackButton({
+class CustomBackButton extends StatelessWidget {
+  const CustomBackButton({
     Key? key,
     this.color = Colors.white,
     this.onPressed,

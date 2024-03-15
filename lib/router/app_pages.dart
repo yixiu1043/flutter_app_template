@@ -5,6 +5,8 @@ import '../modules/home/home_page.dart';
 import '../modules/mine/mine_page.dart';
 import '../modules/promotion/promotion_page.dart';
 import '../components/scaffold_with_bottom_nav_bar/scaffold_with_bottom_nav_bar.dart';
+import '../modules/promotion_detail/promotion_detail_page.dart';
+import 'navigation_transitions.dart';
 
 part './app_routes.dart';
 
@@ -31,19 +33,6 @@ class AppPages {
               restorationId: state.pageKey.value,
               child: const HomePage(),
             ),
-            // routes: [
-            //   GoRoute(
-            //     path: ':id',
-            //     name: AppRoute.product.name,
-            //     pageBuilder: (context, state) {
-            //       int productId = int.parse(state.pathParameters['id']!);
-            //       return SlideFromSideTransitionPage<dynamic>(
-            //         state.pageKey,
-            //         ProductScreen(productId: productId),
-            //       );
-            //     },
-            //   ),
-            // ],
           ),
           // Shopping Cart
           GoRoute(
@@ -53,6 +42,18 @@ class AppPages {
               key: state.pageKey,
               child: const PromotionPage(),
             ),
+            routes: [
+              GoRoute(
+                path: ':id',
+                pageBuilder: (context, state) {
+                  int promotionId = int.parse(state.pathParameters['id']!);
+                  return SlideFromSideTransitionPage<dynamic>(
+                    state.pageKey,
+                    PromotionDetailPage(promotionId: promotionId),
+                  );
+                },
+              ),
+            ],
           ),
           // Account page
           GoRoute(
