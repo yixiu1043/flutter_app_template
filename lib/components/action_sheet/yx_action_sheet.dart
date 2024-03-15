@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yx_app/components/divider/yx_divider.dart';
-import 'package:yx_app/gen/colors.gen.dart';
+import 'package:flutter_app_template/components/divider/yx_divider.dart';
+import 'package:flutter_app_template/gen/colors.gen.dart';
 
 typedef ActionSheetItemClickCallBack = void Function(
     int index, YxActionSheetItem actionItem);

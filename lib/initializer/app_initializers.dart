@@ -1,4 +1,4 @@
-import 'package:yx_app/initializer/app_initializer.dart';
+import 'package:flutter_app_template/initializer/app_initializer.dart';
 
 class AppInitializers {
   final Set<AppInitializer> initializers;

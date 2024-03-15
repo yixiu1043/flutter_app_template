@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:yx_app/const/action.dart';
-import 'package:yx_app/net/exception/auth_fail_exception.dart';
-import 'package:yx_app/net/exception/network_exception.dart';
-import 'package:yx_app/net/exception/server_exception.dart';
-import 'package:yx_app/utils/overlay_extension.dart';
+import 'package:flutter_app_template/const/action.dart';
+import 'package:flutter_app_template/net/exception/auth_fail_exception.dart';
+import 'package:flutter_app_template/net/exception/network_exception.dart';
+import 'package:flutter_app_template/net/exception/server_exception.dart';
+import 'package:flutter_app_template/utils/overlay_extension.dart';
 
 class ErrorHandleInterceptor extends Interceptor {
   @override

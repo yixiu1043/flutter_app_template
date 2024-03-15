@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flavor/flavor.dart';
-import 'package:yx_app/flavor/properties.dart';
-import 'package:yx_app/initializer/app_initializer.dart';
-import 'package:yx_app/net/domain/domain_switch_handler.dart';
+import 'package:flutter_app_template/flavor/properties.dart';
+import 'package:flutter_app_template/initializer/app_initializer.dart';
+import 'package:flutter_app_template/net/domain/domain_switch_handler.dart';
 import 'package:sp_util/sp_util.dart';
 
 class ProxyInitializer implements AppInitializer {

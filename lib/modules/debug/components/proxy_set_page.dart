@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:yx_app/components/button/button_size.dart';
-import 'package:yx_app/components/button/primary_button.dart';
-import 'package:yx_app/gen/assets.gen.dart';
-import 'package:yx_app/gen/colors.gen.dart';
-import 'package:yx_app/utils/overlay_extension.dart';
+import 'package:flutter_app_template/components/button/button_size.dart';
+import 'package:flutter_app_template/components/button/primary_button.dart';
+import 'package:flutter_app_template/gen/assets.gen.dart';
+import 'package:flutter_app_template/gen/colors.gen.dart';
+import 'package:flutter_app_template/utils/overlay_extension.dart';
 import 'package:sp_util/sp_util.dart';
 
 class ProxySetPage extends StatefulWidget {

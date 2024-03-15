@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
-import 'package:yx_app/utils/cool_down_manager.dart';
+import 'package:flutter_app_template/utils/cool_down_manager.dart';
 
 class DoubleExitWillPopScope extends StatelessWidget {
   final Widget child;

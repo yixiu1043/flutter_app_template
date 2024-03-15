@@ -4,13 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:flavor/flavor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:yx_app/flavor/properties.dart';
-import 'package:yx_app/initializer/app_initializer.dart';
-import 'package:yx_app/net/encrypt_interceptor.dart';
-import 'package:yx_app/net/envelope_interceptor.dart';
-import 'package:yx_app/net/error_handle_interceptor.dart';
-import 'package:yx_app/net/net_status_check_interceptor.dart';
-import 'package:yx_app/net/token_interceptor.dart';
+import 'package:flutter_app_template/flavor/properties.dart';
+import 'package:flutter_app_template/initializer/app_initializer.dart';
+import 'package:flutter_app_template/net/encrypt_interceptor.dart';
+import 'package:flutter_app_template/net/envelope_interceptor.dart';
+import 'package:flutter_app_template/net/error_handle_interceptor.dart';
+import 'package:flutter_app_template/net/net_status_check_interceptor.dart';
+import 'package:flutter_app_template/net/token_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioInitializer implements AppInitializer {

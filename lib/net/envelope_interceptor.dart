@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:yx_app/net/exception/auth_fail_exception.dart';
+import 'package:flutter_app_template/net/exception/auth_fail_exception.dart';
 
 import 'exception/server_exception.dart';
 

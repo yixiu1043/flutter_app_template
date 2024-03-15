@@ -1,6 +1,6 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/widgets.dart';
-import 'package:yx_app/components/yx_image/yx_image_placeholder.dart';
+import 'package:flutter_app_template/components/yx_image/yx_image_placeholder.dart';
 
 class YxImage extends StatefulWidget {
   final String url;

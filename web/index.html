@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!--
+<head>
+  <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
 
@@ -14,60 +14,46 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-    <base href="$FLUTTER_BASE_HREF" />
+  <base href="$FLUTTER_BASE_HREF">
 
-    <meta charset="UTF-8" />
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
-    <meta name="description" content="A new Flutter project." />
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
 
-    <!-- iOS meta tags & icons -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="yx_app" />
-    <link rel="apple-touch-icon" href="icons/Icon-192.png" />
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="flutter_app_template">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>yx</title>
-    <link rel="manifest" href="manifest.json" />
-    <link type="text/css" href="./normalize.css" rel="stylesheet" />
-    <link type="text/css" href="./index.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js" integrity="sha512-H6aKTjvYAazW0iNuGj1f2dZvSWlt1HGZGEDsXRPETo2IB4H6v36Vl2qiZNlCRxOp0kT7iBf+7USNPavNscZGAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  </head>
-  <body>
-    <!-- https://loading.io/css/ -->
-<!--    <div class="lds-facebook"><div></div><div></div><div></div></div>-->
-    <div id="yx-loading"></div>
-    <script>
-      lottie.loadAnimation({
-        container: document.getElementById('yx-loading'), // the dom element that will contain the animation
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'data.json' // the path to the animation json
-      });
-      var scriptLoaded = false;
-      function loadMainDartJs() {
-        if (scriptLoaded) {
-          return;
+  <title>flutter_app_template</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = null;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
         }
-        scriptLoaded = true;
-        var scriptTag = document.createElement('script');
-        var time = Date.now();
-        scriptTag.src = 'main.dart.js?t=' + time;
-        scriptTag.type = 'application/javascript';
-        document.body.append(scriptTag);
-      }
-      window.addEventListener("load", function (ev) {
-        loadMainDartJs();
-        window.setTimeout(function () {
-          document.querySelector("#yx-loading").remove();
-        }, 3000);
       });
-      window.onhashchange = function () {
-        window.location.reload();
-      };
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>

@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:yx_app/net/exception/server_exception.dart';
-import 'package:yx_app/utils/log.dart';
-import 'package:yx_app/utils/overlay_extension.dart';
+import 'package:flutter_app_template/net/exception/server_exception.dart';
+import 'package:flutter_app_template/utils/log.dart';
+import 'package:flutter_app_template/utils/overlay_extension.dart';
 
 typedef Request = FutureOr<void> Function();
 typedef OnError = void Function(dynamic e);

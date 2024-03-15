@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:yx_app/net/exception/network_exception.dart';
-import 'package:yx_app/utils/connectivity_manager.dart';
+import 'package:flutter_app_template/net/exception/network_exception.dart';
+import 'package:flutter_app_template/utils/connectivity_manager.dart';
 
 class NetStatusCheckInterceptor extends Interceptor {
   @override

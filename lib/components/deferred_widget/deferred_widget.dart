@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:yx_app/gen/colors.gen.dart';
+import 'package:flutter_app_template/gen/colors.gen.dart';
 
 typedef LibraryLoader = Future<void> Function();
 typedef DeferredWidgetBuilder = Widget Function();

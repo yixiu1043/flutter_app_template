@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yx_app/utils/browser.dart';
+import 'package:flutter_app_template/utils/browser.dart';
 
 class AlignCenterMobileInPC extends StatelessWidget {
   const AlignCenterMobileInPC({Key? key, required this.child}) : super(key: key);

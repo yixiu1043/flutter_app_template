@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:yx_app/utils/fake.dart'
+import 'package:flutter_app_template/utils/fake.dart'
     if (dart.library.html) 'dart:html';
 import 'package:url_launcher/url_launcher.dart';
 

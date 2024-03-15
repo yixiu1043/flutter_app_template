@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:yx_app/initializer/app_initializer.dart';
+import 'package:flutter_app_template/initializer/app_initializer.dart';
 import 'package:sp_util/sp_util.dart';
 
 class SpInitializer extends AppInitializer {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yx_app/components/button/button_size.dart';
-import 'package:yx_app/gen/colors.gen.dart';
+import 'package:flutter_app_template/components/button/button_size.dart';
+import 'package:flutter_app_template/gen/colors.gen.dart';
 
 /// ui 设计主要按钮
 class PrimaryButton extends StatefulWidget {

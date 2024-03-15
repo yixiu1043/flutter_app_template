@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flavor/flavor.dart';
-import 'package:yx_app/flavor/properties.dart';
-import 'package:yx_app/utils/device_type.dart';
-import 'package:yx_app/utils/store.dart';
+import 'package:flutter_app_template/flavor/properties.dart';
+import 'package:flutter_app_template/utils/device_type.dart';
+import 'package:flutter_app_template/utils/store.dart';
 import 'package:sp_util/sp_util.dart';
 
 class TokenInterceptor extends Interceptor {

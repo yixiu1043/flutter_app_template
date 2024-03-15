@@ -1,12 +1,12 @@
 import 'package:flavor/flavor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:yx_app/flavor/properties.dart';
-import 'package:yx_app/utils/fake.dart'
+import 'package:flutter_app_template/flavor/properties.dart';
+import 'package:flutter_app_template/utils/fake.dart'
     if (dart.library.html) 'dart:html';
-import 'package:yx_app/utils/fake.dart' if (dart.library.html) 'dart:ui'
+import 'package:flutter_app_template/utils/fake.dart' if (dart.library.html) 'dart:ui'
     as ui;
-import 'package:yx_app/utils/fake.dart' if (dart.library.html) 'dart:js'
+import 'package:flutter_app_template/utils/fake.dart' if (dart.library.html) 'dart:js'
     as js;
 
 final bool isProd = Flavor.I.getString(API_TYPE) == 'prod' && kReleaseMode;

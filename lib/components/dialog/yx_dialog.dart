@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:yx_app/components/button/button_size.dart';
-import 'package:yx_app/components/button/primary_button.dart';
-import 'package:yx_app/components/button/secondary_button.dart';
-import 'package:yx_app/gen/assets.gen.dart';
-import 'package:yx_app/gen/colors.gen.dart';
+import 'package:flutter_app_template/components/button/button_size.dart';
+import 'package:flutter_app_template/components/button/primary_button.dart';
+import 'package:flutter_app_template/components/button/secondary_button.dart';
+import 'package:flutter_app_template/gen/assets.gen.dart';
+import 'package:flutter_app_template/gen/colors.gen.dart';
 
 const EdgeInsets _defaultInsetPadding =
     EdgeInsets.only(top: 16, left: 20, bottom: 30, right: 20);

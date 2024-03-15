@@ -4,23 +4,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:yx_app/components/theme/yx_theme.dart';
-import 'package:yx_app/components/toast/toast_manager.dart';
-import 'package:yx_app/flavor/properties.dart';
+import 'package:flutter_app_template/components/theme/yx_theme.dart';
+import 'package:flutter_app_template/components/toast/toast_manager.dart';
+import 'package:flutter_app_template/flavor/properties.dart';
 
-// import 'package:yx_app/initializer/api_initializer.dart';
-import 'package:yx_app/initializer/app_initializers.dart';
+// import 'package:flutter_app_template/initializer/api_initializer.dart';
+import 'package:flutter_app_template/initializer/app_initializers.dart';
 
-// import 'package:yx_app/initializer/dio_initializer.dart';
-// import 'package:yx_app/initializer/proxy_initializer.dart';
-// import 'package:yx_app/initializer/sp_initializer.dart';
-import 'package:yx_app/initializer/system_initializer.dart';
+// import 'package:flutter_app_template/initializer/dio_initializer.dart';
+// import 'package:flutter_app_template/initializer/proxy_initializer.dart';
+// import 'package:flutter_app_template/initializer/sp_initializer.dart';
+import 'package:flutter_app_template/initializer/system_initializer.dart';
 
-// import 'package:yx_app/initializer/tools_initializer.dart';
-import 'package:yx_app/router/app_pages.dart';
-import 'package:yx_app/utils/connectivity_manager.dart';
-import 'package:yx_app/utils/tools.dart';
-import 'package:yx_app/utils/yx_translations.dart';
+// import 'package:flutter_app_template/initializer/tools_initializer.dart';
+import 'package:flutter_app_template/router/app_pages.dart';
+import 'package:flutter_app_template/utils/connectivity_manager.dart';
+import 'package:flutter_app_template/utils/tools.dart';
+import 'package:flutter_app_template/utils/yx_translations.dart';
 
 void main() {
   Flavor.create(
@@ -41,11 +41,11 @@ Future<void> setupApp() async {
     // ProxyInitializer(),
     // ToolsInitializer(),
   }).init();
-  runApp(const ProviderScope(child: YxApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class YxApp extends StatelessWidget {
-  const YxApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override

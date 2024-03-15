@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:yx_app/components/divider/yx_divider.dart';
-import 'package:yx_app/components/setting_tile/setting_tile.dart';
-import 'package:yx_app/gen/colors.gen.dart';
-import 'package:yx_app/modules/debug/components/proxy_set_page.dart';
+import 'package:flutter_app_template/components/divider/yx_divider.dart';
+import 'package:flutter_app_template/components/setting_tile/setting_tile.dart';
+import 'package:flutter_app_template/gen/colors.gen.dart';
+import 'package:flutter_app_template/modules/debug/components/proxy_set_page.dart';
 
 class DebugPage extends StatelessWidget {
   const DebugPage({Key? key}) : super(key: key);

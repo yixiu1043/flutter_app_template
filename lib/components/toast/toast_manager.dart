@@ -1,9 +1,9 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yx_app/components/dialog/yx_dialog.dart';
-import 'package:yx_app/components/loading/yx_loading.dart';
-import 'package:yx_app/gen/colors.gen.dart';
+import 'package:flutter_app_template/components/dialog/yx_dialog.dart';
+import 'package:flutter_app_template/components/loading/yx_loading.dart';
+import 'package:flutter_app_template/gen/colors.gen.dart';
 
 ///
 typedef CancelFunc = void Function();

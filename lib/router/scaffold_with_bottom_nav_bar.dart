@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yx_app/gen/assets.gen.dart';
+import 'package:flutter_app_template/gen/assets.gen.dart';
 
 import 'app_pages.dart';
 

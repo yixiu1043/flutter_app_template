@@ -23,9 +23,9 @@ class AppPages {
           return ScaffoldWithBottomNavBar(child: child);
         },
         routes: [
-          // Products
           GoRoute(
             path: Routes.HOME,
+            name: Routes.HOME,
             pageBuilder: (context, state) => NoTransitionPage(
               key: state.pageKey,
               restorationId: state.pageKey.value,
@@ -48,6 +48,7 @@ class AppPages {
           // Shopping Cart
           GoRoute(
             path: Routes.PROMOTION,
+            name: Routes.PROMOTION,
             pageBuilder: (context, state) => NoTransitionPage(
               key: state.pageKey,
               child: const PromotionPage(),
@@ -56,6 +57,7 @@ class AppPages {
           // Account page
           GoRoute(
             path: Routes.MINE,
+            name: Routes.MINE,
             pageBuilder: (context, state) => NoTransitionPage(
               key: state.pageKey,
               child: const MinePage(),

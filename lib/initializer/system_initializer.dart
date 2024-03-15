@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:yx_app/initializer/app_initializer.dart';
+import 'package:flutter_app_template/initializer/app_initializer.dart';
 
 class SystemInitializer extends AppInitializer {
   @override

@@ -1,4 +1,4 @@
-import 'package:yx_app/net/exception/activity_exception.dart';
+import 'package:flutter_app_template/net/exception/activity_exception.dart';
 
 class AuthFailException extends ActivityException {
   final int code;

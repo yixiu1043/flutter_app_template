@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flavor/flavor.dart';
 import 'package:get/get.dart';
-import 'package:yx_app/flavor/properties.dart';
-import 'package:yx_app/initializer/app_initializer.dart';
-import 'package:yx_app/net/api/activity_api.dart';
-import 'package:yx_app/net/domain/domain_switch_handler.dart';
+import 'package:flutter_app_template/flavor/properties.dart';
+import 'package:flutter_app_template/initializer/app_initializer.dart';
+import 'package:flutter_app_template/net/api/activity_api.dart';
+import 'package:flutter_app_template/net/domain/domain_switch_handler.dart';
 import 'package:sp_util/sp_util.dart';
-// import 'package:yx_app/main.reflectable.dart' ;
+// import 'package:flutter_app_template/main.reflectable.dart' ;
 
 class ApiInitializer implements AppInitializer {
   @override
