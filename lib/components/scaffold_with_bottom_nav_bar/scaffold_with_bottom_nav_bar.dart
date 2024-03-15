@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_app_template/gen/assets.gen.dart';
 
-import 'app_pages.dart';
+import '../../router/app_pages.dart';
 
 class ScaffoldWithBottomNavBar extends StatefulWidget {
   final Widget child;

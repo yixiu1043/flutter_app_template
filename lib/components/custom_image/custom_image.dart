@@ -1,8 +1,9 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app_template/components/yx_image/yx_image_placeholder.dart';
 
-class YxImage extends StatefulWidget {
+import 'custom_image_placeholder.dart';
+
+class CustomImage extends StatefulWidget {
   final String url;
   final double? width;
   final double? height;
@@ -10,7 +11,7 @@ class YxImage extends StatefulWidget {
   final AlignmentGeometry alignment;
   final Widget? placeholder;
 
-  const YxImage(
+  const CustomImage(
     this.url, {
     Key? key,
     this.width,
@@ -21,10 +22,10 @@ class YxImage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<YxImage> createState() => YxImageState();
+  State<CustomImage> createState() => CustomImageState();
 }
 
-class YxImageState extends State<YxImage> with SingleTickerProviderStateMixin {
+class CustomImageState extends State<CustomImage> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -60,7 +61,7 @@ class YxImageState extends State<YxImage> with SingleTickerProviderStateMixin {
         switch (state.extendedImageLoadState) {
           case LoadState.loading:
             _controller.reset();
-            return widget.placeholder ?? const YxImagePlaceholder();
+            return widget.placeholder ?? const CustomImagePlaceholder();
           case LoadState.completed:
             if (state.wasSynchronouslyLoaded) {
               return state.completedWidget;

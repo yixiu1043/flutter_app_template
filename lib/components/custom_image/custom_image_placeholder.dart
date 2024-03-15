@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_template/gen/assets.gen.dart';
 import 'package:flutter_app_template/gen/colors.gen.dart';
 
-class YxImagePlaceholder extends StatelessWidget {
-  const YxImagePlaceholder({
+class CustomImagePlaceholder extends StatelessWidget {
+  const CustomImagePlaceholder({
     Key? key,
     this.width,
     this.height,

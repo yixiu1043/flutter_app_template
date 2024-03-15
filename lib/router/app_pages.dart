@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../modules/home/home_page.dart';
 import '../modules/mine/mine_page.dart';
 import '../modules/promotion/promotion_page.dart';
-import 'scaffold_with_bottom_nav_bar.dart';
+import '../components/scaffold_with_bottom_nav_bar/scaffold_with_bottom_nav_bar.dart';
 
 part './app_routes.dart';
 
