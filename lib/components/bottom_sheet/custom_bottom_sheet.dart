@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_app_template/components/button/button_size.dart';
 import 'package:flutter_app_template/components/button/primary_button.dart';
 import 'package:flutter_app_template/gen/assets.gen.dart';
 import 'package:flutter_app_template/gen/colors.gen.dart';
 
-class YxBottomSheet extends StatelessWidget {
+class CustomBottomSheet extends StatelessWidget {
   final String title;
   final String? confirm;
   final Widget? contentWidget;
   final VoidCallback? onConfirm;
 
-  const YxBottomSheet({
+  const CustomBottomSheet({
     Key? key,
     this.contentWidget,
     required this.title,
@@ -56,7 +55,7 @@ class YxBottomSheet extends StatelessWidget {
                   block: true,
                   size: ButtonSize.large,
                   child: Text(
-                    confirm ?? 'comp_confirm'.tr,
+                    confirm ?? '确认',
                   ),
                 )
             ],
@@ -73,4 +72,49 @@ class YxBottomSheet extends StatelessWidget {
       ],
     );
   }
+}
+
+Future<T?> showCustomBottomSheet<T>(
+    BuildContext context,
+    Widget bottomSheet, {
+      Color? backgroundColor,
+      double? elevation,
+      double? borderRadius,
+      ShapeBorder? shape,
+      Clip? clipBehavior,
+      Color? barrierColor,
+      bool useSafeArea = false,
+      bool isScrollControlled = false,
+      bool useRootNavigator = true,
+      bool isDismissible = true,
+      bool enableDrag = true,
+      RouteSettings? settings,
+      Duration? enterBottomSheetDuration,
+      Duration? exitBottomSheetDuration,
+    }) {
+  final BottomSheetThemeData sheetTheme = Theme.of(context).bottomSheetTheme;
+  return showModalBottomSheet<T>(
+    context: context,
+    elevation: 0,
+    barrierColor: Colors.transparent,
+    useSafeArea: useSafeArea,
+    isScrollControlled: isScrollControlled,
+    useRootNavigator: useRootNavigator,
+    isDismissible: isDismissible,
+    enableDrag: enableDrag,
+    routeSettings: settings,
+    backgroundColor: backgroundColor ??
+        sheetTheme.modalBackgroundColor ??
+        sheetTheme.backgroundColor,
+    clipBehavior: Clip.antiAlias,
+    shape: sheetTheme.shape ??
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(borderRadius ?? 12),
+            topRight: Radius.circular(borderRadius ?? 12),
+          ),
+        ),
+    barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
+    builder: (BuildContext context) => bottomSheet,
+  );
 }

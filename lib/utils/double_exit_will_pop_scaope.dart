@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:flutter_app_template/utils/cool_down_manager.dart';
+
+import 'device_type.dart';
 
 class DoubleExitWillPopScope extends StatelessWidget {
   final Widget child;
@@ -21,7 +22,8 @@ class DoubleExitWillPopScope extends StatelessWidget {
     return WillPopScope(
       child: child,
       onWillPop: () async {
-        if (GetPlatform.isAndroid) {
+        // if android
+        if (vendorPlatformDeviceType == 5) {
           if (onWillIntercept?.call() == false) {
             return false;
           }

@@ -1,4 +1,6 @@
-import 'package:get/get.dart';
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 
 enum DeviceType {
   unknown,
@@ -12,20 +14,23 @@ enum DeviceType {
 }
 
 int get vendorPlatformDeviceType {
-  if (GetPlatform.isDesktop) {
+  final bool isDesktop = Platform.isLinux || Platform.isMacOS || Platform.isWindows;
+  if (isDesktop) {
     return DeviceType.pc.index;
   }
-  if (GetPlatform.isWeb && GetPlatform.isAndroid) {
+  if (kIsWeb && Platform.isAndroid) {
     return DeviceType.android_h5.index;
   }
-  if (GetPlatform.isWeb && GetPlatform.isIOS) {
+  if (kIsWeb && Platform.isIOS) {
     return DeviceType.ios_h5.index;
   }
-  if (!GetPlatform.isWeb && GetPlatform.isAndroid) {
+  if (!kIsWeb && Platform.isAndroid) {
     return DeviceType.android.index;
   }
-  if (!GetPlatform.isWeb && GetPlatform.isIOS) {
+  if (!kIsWeb && Platform.isIOS) {
     return DeviceType.ios.index;
   }
   return DeviceType.unknown.index;
 }
+
+

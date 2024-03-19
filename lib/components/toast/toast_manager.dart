@@ -1,6 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_app_template/components/dialog/yx_dialog.dart';
 import 'package:flutter_app_template/components/loading/yx_loading.dart';
 import 'package:flutter_app_template/gen/colors.gen.dart';
@@ -110,7 +109,7 @@ class ToastManager {
                   children: <Widget>[
                     const SizedBox(height: 8),
                     Text(
-                      message ?? "comp_toast_su".tr,
+                      message ?? "成功",
                       style: const TextStyle(
                         fontSize: 12,
                         color: Colors.white,
@@ -170,7 +169,7 @@ class ToastManager {
                   children: <Widget>[
                     const SizedBox(height: 8),
                     Text(
-                      message ?? "comp_toast_fail".tr,
+                      message ?? "失败",
                       style: const TextStyle(
                         fontSize: 12,
                         color: Colors.white,

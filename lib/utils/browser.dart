@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_app_template/utils/fake.dart'
     if (dart.library.html) 'dart:html';
 import 'package:url_launcher/url_launcher.dart';
@@ -39,7 +39,7 @@ Map<String, bool> getBrowser() {
 }
 
 bool isMobile() {
-  if (GetPlatform.isWeb) {
+  if (kIsWeb) {
     var browser = getBrowser();
     return (browser['mobile']! || browser['android']! || browser['ios']!);
   }

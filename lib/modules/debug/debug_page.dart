@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:flutter_app_template/components/divider/yx_divider.dart';
 import 'package:flutter_app_template/components/setting_tile/setting_tile.dart';
 import 'package:flutter_app_template/gen/colors.gen.dart';
 import 'package:flutter_app_template/modules/debug/components/proxy_set_page.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../router/app_pages.dart';
 
 class DebugPage extends StatelessWidget {
   const DebugPage({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class DebugPage extends StatelessWidget {
                   hint: '',
                   value: '',
                   onPressed: () {
-                    Get.to(const ProxySetPage());
+                    context.goNamed(Routes.PROXY_SET);
                   },
                 ),
                 const YxDivider(color: ColorName.color373737A100),

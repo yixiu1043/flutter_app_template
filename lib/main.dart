@@ -3,20 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
 import 'package:flutter_app_template/components/theme/custom_theme.dart';
 import 'package:flutter_app_template/components/toast/toast_manager.dart';
 import 'package:flutter_app_template/flavor/properties.dart';
 
-// import 'package:flutter_app_template/initializer/api_initializer.dart';
+import 'package:flutter_app_template/initializer/api_initializer.dart';
 import 'package:flutter_app_template/initializer/app_initializers.dart';
 
-// import 'package:flutter_app_template/initializer/dio_initializer.dart';
-// import 'package:flutter_app_template/initializer/proxy_initializer.dart';
-// import 'package:flutter_app_template/initializer/sp_initializer.dart';
+import 'package:flutter_app_template/initializer/dio_initializer.dart';
+import 'package:flutter_app_template/initializer/proxy_initializer.dart';
+import 'package:flutter_app_template/initializer/sp_initializer.dart';
 import 'package:flutter_app_template/initializer/system_initializer.dart';
 
-// import 'package:flutter_app_template/initializer/tools_initializer.dart';
+import 'package:flutter_app_template/initializer/tools_initializer.dart';
 import 'package:flutter_app_template/router/app_pages.dart';
 import 'package:flutter_app_template/utils/connectivity_manager.dart';
 import 'package:flutter_app_template/utils/tools.dart';
@@ -37,11 +36,11 @@ void main() {
 Future<void> setupApp() async {
   await AppInitializers({
     SystemInitializer(),
-    // SpInitializer(),
-    // ApiInitializer(),
-    // DioInitializer(),
-    // ProxyInitializer(),
-    // ToolsInitializer(),
+    SpInitializer(),
+    ApiInitializer(),
+    DioInitializer(),
+    ProxyInitializer(),
+    ToolsInitializer(),
   }).init();
   runApp(const ProviderScope(child: MyApp()));
 }

@@ -1,15 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_app_template/components/divider/yx_divider.dart';
 import 'package:flutter_app_template/gen/colors.gen.dart';
 
 typedef ActionSheetItemClickCallBack = void Function(
-    int index, YxActionSheetItem actionItem);
+    int index, CustomActionSheetItem actionItem);
 
 typedef ActionSheetItemClickInterceptor = bool Function(
-    int index, YxActionSheetItem actionItem);
+    int index, CustomActionSheetItem actionItem);
 
 const EdgeInsets _kContentPadding = EdgeInsets.symmetric(vertical: 14);
 const Color _kSeparatorLineColor = Color(0x245E6AA9);
@@ -19,23 +18,23 @@ const TextStyle _kActionStyle =
 const TextStyle _kCancelActionStyle =
     TextStyle(fontSize: 15, color: ColorName.colorE8E8E8A100);
 
-class YxActionSheetItem {
+class CustomActionSheetItem {
   /// 标题文字
   String title;
 
   /// 主标题文本样式
   final TextStyle? titleStyle;
 
-  YxActionSheetItem(
+  CustomActionSheetItem(
     this.title, {
     this.titleStyle,
   });
 }
 
-class YxActionSheet extends StatelessWidget {
+class CustomActionSheet extends StatelessWidget {
   /// 每个选项相关的配置信息的列表
   /// 每个选项支持修改内容见[BrnCommonActionSheetItem]
-  final List<YxActionSheetItem> actions;
+  final List<CustomActionSheetItem> actions;
 
   /// Action 之间分割线颜色
   final Color? separatorLineColor;
@@ -59,7 +58,7 @@ class YxActionSheet extends StatelessWidget {
   /// Action Item 点击事件拦截回调
   final ActionSheetItemClickInterceptor? onItemClickInterceptor;
 
-  const YxActionSheet({
+  const CustomActionSheet({
     Key? key,
     required this.actions,
     this.cancelTitle,
@@ -160,7 +159,7 @@ class YxActionSheet extends StatelessWidget {
 
   // 配置每个选项内部信息
   // action 每个item配置项 [BrnCommonActionSheetItem]
-  Widget _configTile(YxActionSheetItem action) {
+  Widget _configTile(CustomActionSheetItem action) {
     List<Widget> tileElements = [];
     // 添加标题
     tileElements.add(Center(
@@ -186,7 +185,7 @@ class YxActionSheet extends StatelessWidget {
         padding: const EdgeInsets.only(top: 12, bottom: 12),
         child: Center(
           child: Text(
-            cancelTitle ?? "comp_cancel".tr,
+            cancelTitle ?? "取消",
             style: _kCancelActionStyle,
           ),
         ),
@@ -195,9 +194,9 @@ class YxActionSheet extends StatelessWidget {
   }
 }
 
-Future<T?> showJavActionSheet<T>(
+Future<T?> showCustomActionSheet<T>(
   BuildContext context,
-  List<YxActionSheetItem> actions, {
+  List<CustomActionSheetItem> actions, {
   String? cancelTitle,
   Color? bottomSheetColor,
   double? borderRadius,
@@ -221,7 +220,7 @@ Future<T?> showJavActionSheet<T>(
           ),
         ),
     builder: (BuildContext context) {
-      return YxActionSheet(
+      return CustomActionSheet(
         actions: actions,
         cancelTitle: cancelTitle,
         clickCallBack: clickCallBack,
@@ -231,48 +230,3 @@ Future<T?> showJavActionSheet<T>(
   );
 }
 
-extension ExtensionBottomSheet on GetInterface {
-  Future<T?> bottomSheetJav<T>(
-    Widget bottomsheet, {
-    Color? backgroundColor,
-    double? elevation,
-    bool persistent = true,
-    ShapeBorder? shape,
-    Clip? clipBehavior,
-    Color? barrierColor,
-    bool? ignoreSafeArea,
-    bool isScrollControlled = false,
-    bool useRootNavigator = false,
-    bool isDismissible = true,
-    bool enableDrag = true,
-    RouteSettings? settings,
-    Duration? enterBottomSheetDuration,
-    Duration? exitBottomSheetDuration,
-  }) {
-    return Navigator.of(overlayContext!, rootNavigator: useRootNavigator)
-        .push(GetModalBottomSheetRoute<T>(
-      builder: (_) => bottomsheet,
-      isPersistent: persistent,
-      // theme: Theme.of(key.currentContext, shadowThemeOnly: true),
-      theme: Theme.of(key.currentContext!),
-      isScrollControlled: isScrollControlled,
-
-      barrierLabel: MaterialLocalizations.of(key.currentContext!)
-          .modalBarrierDismissLabel,
-
-      backgroundColor: backgroundColor,
-      elevation: elevation,
-      shape: shape,
-      removeTop: ignoreSafeArea ?? true,
-      clipBehavior: clipBehavior,
-      isDismissible: isDismissible,
-      modalBarrierColor: barrierColor,
-      settings: settings,
-      enableDrag: enableDrag,
-      enterBottomSheetDuration:
-      enterBottomSheetDuration ?? const Duration(milliseconds: 250),
-      exitBottomSheetDuration:
-      exitBottomSheetDuration ?? const Duration(milliseconds: 200),
-    ));
-  }
-}

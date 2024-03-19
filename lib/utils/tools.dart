@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:flutter_app_template/router/app_pages.dart';
 import 'package:flutter_app_template/utils/store.dart';
 import 'package:ua_client_hints/ua_client_hints.dart';
 import 'package:udid/udid.dart';

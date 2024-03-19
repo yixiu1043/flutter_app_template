@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../components/toast/toast_manager.dart';
+import '../modules/debug/components/proxy_set_page.dart';
 import '../modules/home/home_page.dart';
 import '../modules/mine/mine_page.dart';
 import '../modules/promotion/promotion_page.dart';
@@ -67,6 +68,14 @@ class AppPages {
             ),
           ),
         ],
+      ),
+      GoRoute(
+        path: Routes.PROXY_SET,
+        name: Routes.PROXY_SET,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const ProxySetPage(),
+        ),
       ),
     ],
   );

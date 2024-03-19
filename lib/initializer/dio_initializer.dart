@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:dio/dio.dart';
 import 'package:flavor/flavor.dart';
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
 import 'package:flutter_app_template/flavor/properties.dart';
 import 'package:flutter_app_template/initializer/app_initializer.dart';
 import 'package:flutter_app_template/net/encrypt_interceptor.dart';
@@ -13,11 +11,12 @@ import 'package:flutter_app_template/net/net_status_check_interceptor.dart';
 import 'package:flutter_app_template/net/token_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../domain/domain.dart';
+
 class DioInitializer implements AppInitializer {
   @override
   FutureOr<void> init() async {
-    for (final element in UrlEndpoint.values) {
-      final dio = Get.find<Dio>(tag: '${element.name}_url');
+    for (final dio in domains) {
       dio.interceptors.addAll([
         NetStatusCheckInterceptor(),
         EncryptInterceptor(
